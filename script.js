@@ -170,11 +170,13 @@ const footerRsvp = document.getElementById("footerRsvp");
 
 if (footerTop) {
   footerTop.addEventListener("click", () => {
-    const scroller = document.querySelector(".invite");
-    if (scroller && typeof scroller.scrollTo === "function") {
-      scroller.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
+    const inviteEl = document.querySelector(".invite");
+    const pageScrolls = window.matchMedia("(min-width: 768px)").matches;
+
+    if (pageScrolls) {
       window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (inviteEl) {
+      inviteEl.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
 }
