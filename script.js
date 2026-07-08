@@ -163,3 +163,31 @@ copyPixBtn.addEventListener("blur", () => {
   copyPixBtn.classList.remove("is-copied");
   copyPixBtn.textContent = "Copiar chave Pix";
 });
+
+/* =================== Interações do footer =================== */
+const footerTop = document.getElementById("footerTop");
+const footerRsvp = document.getElementById("footerRsvp");
+
+if (footerTop) {
+  footerTop.addEventListener("click", () => {
+    const scroller = document.querySelector(".invite");
+    if (scroller && typeof scroller.scrollTo === "function") {
+      scroller.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  });
+}
+
+if (footerRsvp) {
+  footerRsvp.addEventListener("click", () => {
+    openModal("rsvp");
+    updateRsvpPreview();
+    setTimeout(() => rsvpName.focus(), 300);
+  });
+}
+
+const footerPix = document.getElementById("footerPix");
+if (footerPix) {
+  footerPix.addEventListener("click", () => openModal("pix"));
+}
