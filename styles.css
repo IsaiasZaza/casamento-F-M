@@ -3,8 +3,9 @@
   --cream-deep: #efe9e0;
   --gold: #b6985a;
   --gold-soft: #c9ad74;
-  --ink: #6f6a61;
-  --ink-soft: #8a847a;
+  --gold-dark: #8c7340;
+  --ink: #4a453d;
+  --ink-soft: #5f5a52;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -200,11 +201,11 @@ html, body {
 .verse {
   font-size: 26px;
   font-style: italic;
-  line-height: 1.2;
-  color: #5e5950;
+  line-height: 1.35;
+  color: var(--ink);
   max-width: 30ch;
   margin: 0 auto;
-  font-weight: 200;
+  font-weight: 400;
 }
 .verse__ref {
   display: block;
@@ -229,11 +230,11 @@ html, body {
   margin-top: 26px;
   display: flex;
   justify-content: center;
-  font-weight: 200;
+  font-weight: 400;
   gap: 46px;
   font-size: 18px;
   font-style: italic;
-  color: #6c675e;
+  color: var(--ink-soft);
 }
 .parents__col { display: flex; flex-direction: column; gap: 4px; }
 
@@ -243,7 +244,7 @@ html, body {
   font-size: 13px;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--ink);
   font-weight: 600;
 }
 
@@ -289,7 +290,7 @@ html, body {
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
   font-size: 46px;
-  color: #5e5950;
+  color: var(--ink);
   letter-spacing: .04em;
 }
 .date-block__date i {
@@ -299,19 +300,137 @@ html, body {
   opacity: .8;
 }
 
-/* Local */
-.venue { margin-top: 34px; }
-.venue__name {
-  font-weight: 600;
-  font-size: 24px;
-  color: #5e5950;
-  letter-spacing: .02em;
-}
-.venue__addr {
+/* Programação do dia */
+.schedule-intro {
+  margin-top: 28px;
   font-style: italic;
   font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink);
+  text-align: center;
+}
+
+.schedule {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.schedule__item {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.schedule__item:not(:last-child)::before {
+  content: none;
+}
+
+.schedule__step {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dark);
+  color: var(--gold-dark);
+  font-family: "Cinzel", serif;
+  font-size: 13px;
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fbf9f5;
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+}
+
+.schedule__body {
+  text-align: left;
+  padding: 18px 20px;
+  background: #fbf9f5;
+  border: 1px solid #ddd5c7;
+  border-radius: 16px;
+}
+
+.schedule__label {
+  display: block;
+  font-family: "Cinzel", serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.schedule__when {
+  display: block;
+  margin-top: 6px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gold-dark);
+  letter-spacing: .03em;
+}
+
+.schedule__name {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: .02em;
+  line-height: 1.25;
+}
+
+.schedule__addr {
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--ink-soft);
-  margin-top: 2px;
+  margin-top: 4px;
+}
+
+.schedule__note {
+  margin-top: 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  line-height: 1.45;
+  letter-spacing: .02em;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.schedule__map {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 18px;
+  border: 1px solid #cfc6b8;
+  border-radius: 40px;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: .03em;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .15s ease;
+}
+
+.schedule__map svg {
+  width: 18px;
+  height: 18px;
+  color: var(--gold-dark);
+  flex-shrink: 0;
+}
+
+.schedule__map:hover {
+  border-color: var(--gold);
+  box-shadow: 0 6px 18px rgba(150,125,70,.14);
+  transform: translateY(-1px);
 }
 
 .buttons-hint {
@@ -339,7 +458,7 @@ html, body {
   border-radius: 40px;
   background: #fbf9f5;
   text-decoration: none;
-  color: #5e5950;
+  color: var(--ink);
   font: inherit;
   cursor: pointer;
   transition: border-color .25s ease, box-shadow .25s ease, transform .15s ease;
@@ -510,7 +629,7 @@ html, body {
   background: #fbf9f5;
   font-family: "Cormorant Garamond", serif;
   font-size: 18px;
-  color: #5e5950;
+  color: var(--ink);
   transition: border-color .2s ease, box-shadow .2s ease;
 }
 .rsvp-form__input:focus,
@@ -554,7 +673,7 @@ html, body {
   font-size: 28px;
   font-weight: 500;
   text-align: center;
-  color: #5e5950;
+  color: var(--ink);
 }
 .rsvp-form__preview {
   padding: 14px;
@@ -574,7 +693,7 @@ html, body {
   margin-top: 8px;
   font-size: 16px;
   line-height: 1.5;
-  color: #5e5950;
+  color: var(--ink);
   white-space: pre-wrap;
   text-align: left;
 }
@@ -607,7 +726,7 @@ html, body {
   font-size: 22px;
   font-weight: 500;
   letter-spacing: .06em;
-  color: #5e5950;
+  color: var(--ink);
 }
 
 /* Assinatura */
@@ -703,7 +822,7 @@ html, body {
   border-radius: 14px;
   border: 1px solid #e8e0d4;
   background: #fff;
-  color: #5e5950;
+  color: var(--ink);
   font-family: "Cinzel", serif;
   font-size: 9px;
   letter-spacing: .08em;
@@ -935,9 +1054,18 @@ html, body {
   .date-block__date { font-size: 72px; gap: 22px; }
   .date-block__date i { font-size: 52px; }
 
-  .venue { margin-top: 50px; }
-  .venue__name { font-size: 34px; }
-  .venue__addr { font-size: 21px; }
+  .schedule-intro { margin-top: 40px; font-size: 20px; }
+  .schedule { margin-top: 40px; gap: 24px; }
+  .schedule__item { grid-template-columns: 44px 1fr; gap: 18px; }
+  .schedule__step { width: 44px; height: 44px; font-size: 15px; margin-top: 22px; }
+  .schedule__body { padding: 24px 26px; }
+  .schedule__label { font-size: 12px; }
+  .schedule__when { font-size: 26px; }
+  .schedule__name { font-size: 30px; }
+  .schedule__addr { font-size: 20px; }
+  .schedule__note { font-size: 19px; margin-top: 14px; }
+  .schedule__map { margin-top: 18px; padding: 12px 22px; font-size: 19px; }
+  .schedule__map svg { width: 20px; height: 20px; }
 
   .buttons-hint { margin-top: 50px; font-size: 21px; }
 
