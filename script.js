@@ -38,6 +38,7 @@ const modals = {
 function openModal(id) {
   modals[id].classList.add("is-open");
   modals[id].setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
   document.body.style.overflow = "hidden";
 }
 
@@ -46,6 +47,7 @@ function closeModal(id) {
   modals[id].setAttribute("aria-hidden", "true");
 
   if (!Object.values(modals).some((modal) => modal.classList.contains("is-open"))) {
+    document.body.classList.remove("modal-open");
     document.body.style.overflow = "";
   }
 }
@@ -84,7 +86,7 @@ function buildRsvpMessage(name, guests, message) {
   const lines = [
     `Olá, Felipe e Mirian!`,
     "",
-    `Meu nome é *${trimmedName}* e confirmo minha presença no casamento de vocês, no dia *17/10/2026 às 15h*.`,
+    `Meu nome é *${trimmedName}* e confirmo minha presença no casamento de vocês, no dia *17/10/2026 às 15h30*.`,
     "",
     `Total de convidados: *${guestLabel(guests)}*.`,
   ];
